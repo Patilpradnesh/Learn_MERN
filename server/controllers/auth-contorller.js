@@ -3,11 +3,11 @@ const bcrypt = require("bcryptjs");
 // home page logic
 const home = async (req, res) => {
   try {
-    res.status(200).send("world best MERN Devloper patil");
+    // res.status(200).send("world best MERN Devloper patil");
   } catch (error) {
     console.log(error);
   }
-};
+};  
 
 const login=async(req,res)=>{
 

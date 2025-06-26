@@ -6,7 +6,7 @@ const validate=(schema)=>async(req,res,next)=>{
     }catch(err){
        
         const status =422;
-        const message ="fil the input porperly";
+        const message ="fill the input properly";
         const extraDetails= (err.errors && err.errors[0] && err.errors[0].message) ||
             err.message ||
             "Error from backend";
