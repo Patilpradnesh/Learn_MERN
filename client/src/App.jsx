@@ -7,7 +7,8 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Navbar } from "./components/Navbar";
 import {Error} from "./pages/Error";
-import{Footer} from "./components/Footer"
+import {Logout} from "./pages/Logout";
+import{Footer} from "./components/Footer";
 
 
 const App =()=>{
@@ -21,6 +22,7 @@ const App =()=>{
       <Route path="/service" element={<Service/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/logout" element={<Logout/>}/>
       <Route path="/*" element={<Error/>}/>
    </Routes>
     <Footer/>

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 const URI = "http://localhost:5000/api/auth/login";
+
 export const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
+  
+  const {storeTokenInLS}=useAuth();
 
   const handleInput = (e) => {
     console.log(e);
@@ -32,13 +36,23 @@ export const Login = () => {
         body: JSON.stringify(user),
       });
       console.log("login", response);
+
+
       if (response.ok) {
+
         alert("Login successfully");
+
+        const res_data= await response.json();
+        console.log(res_data);
+        storeTokenInLS(res_data.token);
+        
         setUser({
           email: "",
           password: "",
         });
+
         navigate("/");
+
       } else {
         alert("Invalid credential");
       }
@@ -76,7 +90,7 @@ export const Login = () => {
                       value={user.email}
                       onChange={handleInput}
                     />
-                  </div>
+                  </div> 
                   <div>
                     <label htmlFor="password">password</label>
                     <input
