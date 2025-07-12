@@ -1,10 +1,12 @@
 const express = require("express");
 const authControl = require("../controllers/auth-contorller");
 const {signInSchema,signUpSchema} = require("../validators/auth.validator");
-
+const authMiddleware = require("../middlewares/auth-middleware");
 const router =express.Router();
 const validate = require("../middlewares/validate-middleware");
 
+
+//  -----------------------------------------------------------------------------------------------------------------------------------------
 // app.get("/",(req,res)=>{
 //     res.status(200).send("")
 // })
@@ -26,8 +28,12 @@ router.route("/").get(authControl.home);
 
 //  for register page
 router.route("/register").post(validate(signUpSchema),authControl.register);
-
+// for login page
 router.route("/login").post(validate(signInSchema),authControl.login);
+
+// for user 
+router.route('/user').get(authMiddleware,authControl.user);
+
 
 
 module.exports = router;

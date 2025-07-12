@@ -1,13 +1,25 @@
+import { useAuth } from "../store/auth";
+import { useState } from "react";
+
 
 export const Home=()=>{
     
+const [userData,setUserData]= useState(true);
+const {user}=useAuth();
+if(userData && user){
+    setUserData({
+        userName:user.userName,
+    })
+    setUserData(false);
+}
+
     return <>
         
         <main>
             <section className="section-hero">
                 <div className="container grid grid-two-cols">
                     <div className="hero-content">
-                        <p>hey username</p>
+                        <p>hey {user.userName} </p>
                         <h1>Welcome to PCP web</h1>
                         <p>information about us is like her </p>
                         <div className="btn btn-group">

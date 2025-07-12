@@ -1,10 +1,24 @@
 import { useState } from "react";
+import { useAuth } from "../store/auth";
+
 export const Contact = () => {
   const [contact, setContact] = useState({
-    username: "",
+    userName: "",
     email: "",
     message: "",
   });
+
+  const [userData,setUserData]= useState(true);
+
+  const {user}= useAuth();
+  if(userData && user){
+    setContact({
+      userName:user.userName,
+      email:user.email,
+      message:"",
+    });
+    setUserData(false);
+  }
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -42,15 +56,15 @@ export const Contact = () => {
               <div className="contact-form">
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="username">username</label>
+                    <label htmlFor="userName">userName</label>
                     <input
-                      type="username"
-                      name="username"
-                      id="username"
-                      placeholder="Enter you username"
+                      type="userName"
+                      name="userName"
+                      id="userName"
+                      placeholder="Enter you userName"
                       required
                       autocomplete="off"
-                      value={contact.username}
+                      value={contact.userName}
                       onChange={handleInput}
                     />
                   </div>

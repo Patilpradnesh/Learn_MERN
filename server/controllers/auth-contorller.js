@@ -73,4 +73,17 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { home,register,login };
+// user logic  to get the data on frontend side 
+
+const user = async(req,res)=>{
+  try {
+    const userData = req.user;
+    console.log(userData);
+    return res.status(200).json({userData});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({meg:"Invalid operation"});
+  }
+}
+
+module.exports = { home,register,login,user };
