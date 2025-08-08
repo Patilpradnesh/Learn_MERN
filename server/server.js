@@ -8,11 +8,12 @@ const errorMiddleware = require("./middlewares/error-middleware.js");
 const cors =require('cors');
 
 var corsOptions={
-  origin:'http://localhost:5173',
+  origin: true,  // Allows all origins
   methods:"GET,POST,PUT,DELETE,PATCH,HEAD",
   credentials:true,
   optionsSuccessStatus:200
 }
+
 
 app.use(cors(corsOptions));  // handling cors polices for working with multiple port mainly used for fronted and backend pairing connection
 app.use(express.json()); // to parse JSON bodies
