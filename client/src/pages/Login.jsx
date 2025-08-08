@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import {toast} from "react-hot-toast"
 const URI = "http://localhost:5000/api/auth/login";
 
 export const Login = () => {
@@ -22,12 +23,12 @@ export const Login = () => {
       });
 
       if (response.ok) {
-        alert("Login successful");
+       toast.success("Login successful");
         const res_data = await response.json();
         storeTokenInLS(res_data.token);
         navigate("/");
       } else {
-        alert("Invalid credentials");
+        toast.error("Invalid credentials");
       }
     } catch (error) {
       console.log("login", error);

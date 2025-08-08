@@ -10,6 +10,7 @@ import { Error } from "./pages/Error";
 import { Logout } from "./pages/Logout";
 import { Footer } from "./components/Footer";
 
+
 const App = () => {
   return (
     <>
@@ -26,7 +27,9 @@ const App = () => {
           <Route path="*" element={<Error />} />
         </Routes>
       </main>
+      
       <Footer />
+
     </>
   );
 };

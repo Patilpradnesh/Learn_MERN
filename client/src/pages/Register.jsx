@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-hot-toast";
 const URI = "http://localhost:5000/api/auth/register";
 
 export const Register = () => {
@@ -30,13 +31,15 @@ export const Register = () => {
       });
 
       if (response.ok) {
-        alert("Registration successful");
+       
         const res_data = await response.json();
         storeTokenInLS(res_data.token);
+         toast.success("Registration successful");
         navigate("/login");
+        
       } else {
         console.error("Registration failed:", await response.text());
-        alert("Registration failed. Please check the console.");
+        toast.error("Registration failed.");
       }
     } catch (error) {
       console.log("register", error);
