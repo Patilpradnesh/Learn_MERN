@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-hot-toast";
-const URI = `${process.env.URl}/api/auth/register`;
+const URI = `${import.meta.env.VITE_API_URL}/api/auth/register`;
 
 export const Register = () => {
   const [user, setUser] = useState({

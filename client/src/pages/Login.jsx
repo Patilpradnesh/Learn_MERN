@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import {toast} from "react-hot-toast"
-const URI = ` ${process.env.URL}/api/auth/login`;
+const URI = ` ${import.meta.env.VITE_API_URL}/api/auth/login`;
 
 export const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
