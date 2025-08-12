@@ -50,7 +50,7 @@ export const Register = () => {
     <section className="section-registration">
       <div className="container grid grid-two-cols">
         <div className="registration-image">
-          <img src="/images/regImg.jpg" alt="register-form" />
+          <img src="/images/registration.webp" alt="register-form" />
         </div>
         <div className="registration-form">
           <h1>Registration Form</h1>
