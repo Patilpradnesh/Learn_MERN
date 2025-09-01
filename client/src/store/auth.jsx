@@ -41,11 +41,18 @@ export const AuthProvider = ({ children }) => {
 
         }
       })
-
+      
       if(response.ok){
         const data = await response.json();
         console.log("User data:", data.userData);
         setUser(data.userData);
+      }else if(response.status === 401){
+        setToken(null);
+        setUser("");
+        localStorage.removeItem("token");
+        toast.error("session expired.login again")
+        navigate("/login");
+
       }
     } catch (error) {
       console.error("Error during user authentication:", error);
