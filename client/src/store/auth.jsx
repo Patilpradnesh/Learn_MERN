@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
+import {toast} from 'react-hot-toast';
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
@@ -17,18 +18,26 @@ export const AuthProvider = ({ children }) => {
     // logout function to clear the token
   // and remove it from localStorage
   const LogoutUser = () => {
-    setToken(null);
-    localStorage.removeItem("token");
+
+    const tokenExisted = localStorage.getItem("token");
+
+    if(tokenExisted){
+      setToken(null);
+      localStorage.removeItem("token");
+      toast.success("Logout successful");
+    }
+    
+    
   };
 
   // authentication context provider -to get the currently logged-in  user data 
-  const userAuthentication = async () => {
+  const userAuthentication = async (customToken) => {
     try {
       const response =await fetch(`${import.meta.env.VITE_API_URL}/api/auth/user`,{
         method:"Get",
         headers:{
           // "Content-type":"application/json",
-          "Authorization": `Bearer ${(token)}`,
+          "Authorization": `Bearer ${(customToken||token)}`,
 
         }
       })
@@ -51,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser,user }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser,user,userAuthentication }}>
       {children}
     </AuthContext.Provider>
   );

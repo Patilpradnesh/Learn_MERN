@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import {toast} from "react-hot-toast"
-const URI = ` ${import.meta.env.VITE_API_URL}/api/auth/login`;
+const URI = `${import.meta.env.VITE_API_URL}/api/auth/login`;
 
 export const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const { storeTokenInLS } = useAuth();
+  const { storeTokenInLS,userAuthentication } = useAuth();
 
   const handleInput = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value }); // in squear brakets dynamic data is use which chnage as per the input value 
   };
 
   const handleSubmits = async (e) => {
@@ -26,6 +26,7 @@ export const Login = () => {
        toast.success("Login successful");
         const res_data = await response.json();
         storeTokenInLS(res_data.token);
+        await userAuthentication(res_data.token);
         navigate("/");
       } else {
         toast.error("Invalid credentials");

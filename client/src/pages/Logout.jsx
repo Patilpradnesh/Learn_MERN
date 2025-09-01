@@ -7,10 +7,11 @@ import {toast} from 'react-hot-toast';
 
 export const Logout=()=> {
     const {LogoutUser} = useAuth();
-     useEffect(()=>{
-    LogoutUser();
-  },[LogoutUser]);
-  toast.success("Logout successful");
+    
+    useEffect(()=>{
+      LogoutUser();
+    },[]);
+  
   return<Navigate to='/login'/>
 
  
