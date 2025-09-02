@@ -1,3 +1,4 @@
+import { Analytics } from "../components/Analytics";
 import { useAuth } from "../store/auth";
 
 export const Home = () => {
@@ -10,17 +11,29 @@ export const Home = () => {
           {user && <p>Hey {user?.userName || "Guest"}</p>}
           <h1>Welcome to PCP Web</h1>
           <p>
-            This is a modern MERN stack application. Explore our features and services.
+            This is a modern MERN stack application. Explore our features and
+            services.
           </p>
           <div className="btn-group">
-            <a href="/contact" className="btn">Connect Now</a>
-            <a href="/service" className="btn">Our Services</a>
+            <a href="/contact" className="btn">
+              Connect Now
+            </a>
+            <a href="/service" className="btn">
+              Our Services
+            </a>
           </div>
         </div>
         <div className="hero-image">
-          <img src="/images/dashboard.jpeg" alt="home page" width="400" height="350" />
+          <img
+            src="/images/dashboard.jpeg"
+            alt="home page"
+            width="400"
+            height="350"
+          />
         </div>
       </div>
+
+      <Analytics/>
     </section>
   );
 };

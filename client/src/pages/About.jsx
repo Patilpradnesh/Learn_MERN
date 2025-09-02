@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../store/auth";
 import { useState } from "react";
+import { Analytics } from "../components/Analytics";
 export const About = () => {
 
   const[userData,setUserData]=useState(true);
@@ -12,9 +13,10 @@ export const About = () => {
     setUserData(false);
   }
   return (
+    <section className="content-center">
     <div className="about-wrapper">
       <div className="about-card">
-        <h1 className="about-heading">👋 Hey {user.userName}</h1>
+        <h1 className="about-heading">👋 Hey {user.userName || "Guest"}</h1>
         <h1 className="about-heading"> This is the About Page!</h1>
         <p className="about-description">
           Welcome to our Learn MERN app. This section introduces who we are and
@@ -27,5 +29,8 @@ export const About = () => {
         </p>
       </div>
     </div>
+    <hr />
+    <Analytics/>
+    </section>
   );
 };

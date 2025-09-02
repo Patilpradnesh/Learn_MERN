@@ -5,6 +5,7 @@ import React from "react";
  const Error = () => {
   return (
     <>
+    <section className="content-center" >
       <div id="error-page">
         <div className="content">
           <h2 className="header">404</h2>
@@ -22,6 +23,7 @@ import React from "react";
           </div>
         </div>
       </div>
+     </section>
     </>
   );
 };
