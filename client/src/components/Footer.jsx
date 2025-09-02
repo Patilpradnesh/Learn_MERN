@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 
 export const Footer = () => {
@@ -10,13 +9,12 @@ export const Footer = () => {
           &copy; {new Date().getFullYear()} PCP Web. All rights reserved.
         </p>
         <div className="footer-links">
-           <NavLink to="/about">About</NavLink>
-
+          <a href="/about">About</a>
           <a href="/service">Services</a>
           <a href="/contact">Contact</a>
         </div>
         <p>
-          Made with <span style={{color: "#e25555"}}>❤</span> by Pradnesh Patil
+          Made with <span style={{color: "#7655e2ff"}}>❤</span> by Pradnesh Patil
         </p>
       </div>
     </footer>
