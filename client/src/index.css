@@ -291,3 +291,34 @@ footer {
   color: #333;
   margin: 0;
 }
+
+
+/*  footer style */
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 24px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 12px 0;
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #007bff;
+}
