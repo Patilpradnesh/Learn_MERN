@@ -7,7 +7,7 @@ export const Home = () => {
     <section className="section-hero">
       <div className="container grid grid-two-cols">
         <div className="hero-content">
-          {user && <p>Hey {user?.userName}</p>}
+          {user && <p>Hey {user?.userName || "Guest"}</p>}
           <h1>Welcome to PCP Web</h1>
           <p>
             This is a modern MERN stack application. Explore our features and services.

@@ -8,6 +8,7 @@ export const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const { storeTokenInLS,userAuthentication } = useAuth();
+  const [loading,setLoading]=useState(false);
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value }); // in squear brakets dynamic data is use which chnage as per the input value 
@@ -15,6 +16,7 @@ export const Login = () => {
 
   const handleSubmits = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(URI, {
         method: "POST",
@@ -71,7 +73,9 @@ export const Login = () => {
                 onChange={handleInput}
               />
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "login...":"logIn now"}
+            </button>
           </form>
         </div>
       </div>

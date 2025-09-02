@@ -14,6 +14,7 @@ export const Register = () => {
 
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
+  const [loading,setLoading]=useState(false);
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -23,6 +24,7 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(URI, {
         method: "POST",
@@ -43,6 +45,8 @@ export const Register = () => {
       }
     } catch (error) {
       console.log("register", error);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -107,7 +111,10 @@ export const Register = () => {
                 onChange={handleInput}
               />
             </div>
-            <button type="submit">Register Now</button>
+            <button type="submit" disabled={loading}>
+              {loading ?  "Registering..." : "Register now"}
+
+            </button>
           </form>
         </div>
       </div>

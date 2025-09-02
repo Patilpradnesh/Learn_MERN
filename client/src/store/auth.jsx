@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error("Error during user authentication:", error);
+      toast.error("network error, try again!!")
       
     }
   }
